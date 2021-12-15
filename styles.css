@@ -13,3 +13,18 @@ body {
   padding: 2rem;
   font-size: small;
 }
+
+.pen {
+  max-width: 2rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#new-entry {
+  margin-left: 3rem;
+  margin-top: 2rem;
+  background-color: red;
+  padding: 1rem;
+}

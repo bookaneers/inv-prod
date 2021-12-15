@@ -13,14 +13,42 @@
   <header>
     <div class="navigator">
       <h1>Inventive - Customer Report
-        <a href="#" id="customers">Customers</a>
-        <a href="#" id="orders">Orders</a>
-        <a href="#" id="report">Report</a>
+        <a href="#" id="customers-view">Customers</a>
+        <a href="#" id="orders-view">Orders</a>
+        <a href="#" id="report-view">Report</a>
       </h1>
     </div>
   </header>
   <main>
 
+
+<!-- CUSTOMERS -->
+    <div class="view hidden" id="customers" data-view="customers">
+      <button id="new-entry">NEW ENTRY</button>
+      <ul id="cust-list"></ul>
+    </div>
+
+<!-- CUSTOMERS FORM -->
+    <div class="view hidden" id="c-form" data-view="c-form">
+      <h1> New Client </h1>
+      <form id="contact-form">
+        <label for="form-customer">Customer</label>
+        <input required name="form-customer" type="text" id="form-customer">
+        <label for="form-disc">Discount</label>
+        <input required name="form-disc" type="text" id="form-disc">
+        <button type="submit" id="button">SAVE</button>
+      </form>
+    </div>
+
+<!-- ORDERS -->
+    <div class="view hidden" id="orders" data-view="orders">
+      <h1> HEEELLOOOOO </h1>
+    </div>
+
+<!-- REPORT -->
+    <div class="view hidden" id="report" data-view="report">
+      <h1> WORLD </h1>
+    </div>
 
   </main>
   <script src="main.js"></script>
