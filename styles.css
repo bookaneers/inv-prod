@@ -29,9 +29,11 @@ a {
 
 }
 
-.inline-customers {
+.inline-customers,
+.inline-orders {
   padding: 2rem;
-  color: rgb(228,28,43)
+  color: rgb(228,28,43);
+  display: flex;
 }
 
 span {
@@ -44,20 +46,21 @@ span {
   display: flex;
 }
 
-.row span {
-  align-items:baseline;
+span {
+  flex-basis: 20%;
 }
 
 .pen {
   max-height: 1.5rem;
-  /* text-align: end; */
+
 }
 
 .hidden {
   display: none !important;
 }
 
-#new-entry, #new-order{
+#new-entry,
+#new-order{
   margin-left: 3rem;
   margin-top: 2rem;
   background-color: red;
@@ -65,7 +68,8 @@ span {
   border-radius: 10%;
 }
 
-#c-form {
+#c-form,
+#o-form {
   margin-left: 3rem;
   margin-top: 2rem;
 }
