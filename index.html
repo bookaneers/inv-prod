@@ -12,11 +12,11 @@
 <body>
   <header>
     <div class="navigator">
-      <h1>Inventive - Customer Report
-        <a href="#" id="customers-view">Customers</a>
-        <a href="#" id="orders-view">Orders</a>
-        <a href="#" id="report-view">Report</a>
-      </h1>
+      <img src="images/logo.png">
+      <h1>Customer Report</h1>
+      <a href="#" id="customers-view">Customers</a>
+      <a href="#" id="orders-view">Orders</a>
+      <a href="#" id="report-view">Report</a>
     </div>
   </header>
   <main>
@@ -25,6 +25,10 @@
 <!-- CUSTOMERS -->
     <div class="view hidden" id="customers" data-view="customers">
       <button id="new-entry">NEW ENTRY</button>
+      <div class="inline-customers">
+        <span>ID</span><span>Customer</span><span>Discount</span>
+      </div>
+
       <ul id="cust-list"></ul>
     </div>
 
@@ -42,7 +46,11 @@
 
 <!-- ORDERS -->
     <div class="view hidden" id="orders" data-view="orders">
-      <h1> HEEELLOOOOO </h1>
+      <button id="new-order">NEW ORDER</button>
+      <div class="inline-customers">
+        <span>ID</span><span>Customer</span><span>Part Number</span><span>Qty</span><span>Price</span>
+      </div>
+      <ul id="order-list"></ul>
     </div>
 
 <!-- REPORT -->
