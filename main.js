@@ -9,14 +9,14 @@ const customersDisc = [
 ];
 
 const orders = [
-  { id: 1, partNumber: 'AA1', qty: 1, price: 3.20 },
-  { id: 2, partNumber: 'AA2', qty: 2, price: 4.28 },
-  { id: 3, partNumber: 'AA3', qty: 3, price: 5.36 },
-  { id: 4, partNumber: 'AA4', qty: 4, price: 6.44 },
-  { id: 5, partNumber: 'AA5', qty: 5, price: 7.52 },
-  { id: 1, partNumber: 'AA6', qty: 6, price: 8.60 },
-  { id: 2, partNumber: 'AA7', qty: 7, price: 9.68 },
-  { id: 3, partNumber: 'AA8', qty: 8, price: 10.76 },
+  { id: 1, customer: 'Big Fish', partNumber: 'AA1', qty: 1, price: 3.20 },
+  { id: 2, customer: 'Medium Fish', partNumber: 'AA2', qty: 2, price: 4.28 },
+  { id: 3, customer: 'Little Fish', partNumber: 'AA3', qty: 3, price: 5.36 },
+  { id: 4, customer: 'Small Fish', partNumber: 'AA4', qty: 4, price: 6.44 },
+  { id: 5, customer: 'Bryan', partNumber: 'AA5', qty: 5, price: 7.52 },
+  { id: 1, customer: 'Big Fish', partNumber: 'AA6', qty: 6, price: 8.60 },
+  { id: 2, customer: 'Medium Fish', partNumber: 'AA7', qty: 7, price: 9.68 },
+  { id: 3, customer: 'Little Fish', partNumber: 'AA8', qty: 8, price: 10.76 },
 ];
 
 console.log('Customers Disc:', customersDisc);
@@ -28,6 +28,7 @@ const $customers = document.querySelector('#customers');
 const $orders = document.querySelector('#orders');
 const $report = document.querySelector('#report');
 const $customersForm = document.querySelector('#c-form');
+const $ordersForm = document.querySelector('#o-form');
 
 // ---------- listing customers discount ----------
 document.querySelector('#customers-view').addEventListener('click', (event) => {
@@ -36,6 +37,7 @@ document.querySelector('#customers-view').addEventListener('click', (event) => {
   $orders.className = 'view hidden';
   $report.className = 'view hidden';
   $customersForm.className = 'view hidden';
+  $orders.className = 'view hidden';
 
   const $uList = document.querySelector('#cust-list');
   $uList.innerHTML = '';
@@ -79,6 +81,7 @@ document.querySelector('#new-entry').addEventListener('click', (event) => {
   $orders.className = 'view hidden';
   $report.className = 'view hidden';
   $customersForm.className = 'view';
+  $orders.className = 'view hidden';
 
   const $contactForm = document.querySelector('#contact-form');
 
@@ -113,6 +116,7 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
   $orders.className = 'view';
   $report.className = 'view hidden';
   $customersForm.className = 'view hidden';
+  $orders.className = 'view hidden';
 
   const $uList = document.querySelector('#order-list');
   $uList.innerHTML = '';
@@ -161,6 +165,39 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
 
 });
 
+
+// ---------- new order form ----------
+document.querySelector('#new-order').addEventListener('click', (event) => {
+  $customers.className = 'view hidden';
+  $orders.className = 'view hidden';
+  $report.className = 'view hidden';
+  $customersForm.className = 'view hidden';
+  $orders.className = 'view';
+
+  const $orderForm = document.querySelector('#order-form');
+
+  $orderForm.addEventListener('submit', (event) => {
+    console.log(event);
+    event.preventDefault();
+
+    if ($orderForm.elements['customer-name'].value !== '') {
+      const entry = {
+        id: $orderForm.elements['customer-id'].value,
+        customer: $contactForm.elements['customer-name'].value,
+        partNumber: Number($contactForm.elements.partNumber.value),
+        qty: Number($contactForm.elements.qty.value),
+        price: Number($contactForm.elements.price.value),
+      };
+      ordersDisc.push(entry);
+      console.log(entry);
+      console.log(ordersDisc);
+    }
+    document.getElementById('contact-form').reset();
+  });
+});
+
+
+// ---------- report ----------
 document.querySelector('#report-view').addEventListener('click', (event) => {
   $customers.className = 'view hidden';
   $orders.className = 'view hidden';
