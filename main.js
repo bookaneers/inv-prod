@@ -37,7 +37,7 @@ document.querySelector('#customers-view').addEventListener('click', (event) => {
   $orders.className = 'view hidden';
   $report.className = 'view hidden';
   $customersForm.className = 'view hidden';
-  $orders.className = 'view hidden';
+  $ordersForm.className = 'view hidden';
 
   const $uList = document.querySelector('#cust-list');
   $uList.innerHTML = '';
@@ -81,7 +81,7 @@ document.querySelector('#new-entry').addEventListener('click', (event) => {
   $orders.className = 'view hidden';
   $report.className = 'view hidden';
   $customersForm.className = 'view';
-  $orders.className = 'view hidden';
+  $ordersForm.className = 'view hidden';
 
   const $contactForm = document.querySelector('#contact-form');
 
@@ -116,10 +116,12 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
   $orders.className = 'view';
   $report.className = 'view hidden';
   $customersForm.className = 'view hidden';
-  $orders.className = 'view hidden';
+  $ordersForm.className = 'view hidden';
 
-  const $uList = document.querySelector('#order-list');
-  $uList.innerHTML = '';
+  const $orderUList = document.querySelector('#order-list');
+  $orderUList.innerHTML = '';
+
+  console.log($orderUList);
 
   for (let i = 0; i < orders.length; i++) {
 
@@ -130,7 +132,7 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
     $displayId.textContent = orders[i].id;
 
     const $displayCustomer = document.createElement('span');
-    $displayCustomer.textContent = customersDisc[orders[i].id -1].customer;
+    $displayCustomer.textContent = orders[i].customer;
 
     const $displayPart = document.createElement('span');
     $displayPart.textContent = orders[i].partNumber;
@@ -158,11 +160,10 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
     $row.appendChild($displayPrice);
     $row.appendChild($displayIcon);
 
-    $uList.appendChild($row);
+    $orderUList.appendChild($row);
 
     console.log(i);
   }
-
 });
 
 
@@ -172,7 +173,7 @@ document.querySelector('#new-order').addEventListener('click', (event) => {
   $orders.className = 'view hidden';
   $report.className = 'view hidden';
   $customersForm.className = 'view hidden';
-  $orders.className = 'view';
+  $ordersForm.className = 'view';
 
   const $orderForm = document.querySelector('#order-form');
 
@@ -182,17 +183,17 @@ document.querySelector('#new-order').addEventListener('click', (event) => {
 
     if ($orderForm.elements['customer-name'].value !== '') {
       const entry = {
-        id: $orderForm.elements['customer-id'].value,
-        customer: $contactForm.elements['customer-name'].value,
-        partNumber: Number($contactForm.elements.partNumber.value),
-        qty: Number($contactForm.elements.qty.value),
-        price: Number($contactForm.elements.price.value),
+        id: Number($orderForm.elements['customer-id'].value),
+        customer: $orderForm.elements['customer-name'].value,
+        partNumber: $orderForm.elements['form-part'].value,
+        qty: Number($orderForm.elements['form-qty'].value),
+        price: Number($orderForm.elements['form-price'].value),
       };
-      ordersDisc.push(entry);
+      orders.push(entry);
       console.log(entry);
-      console.log(ordersDisc);
+      console.log(orders);
     }
-    document.getElementById('contact-form').reset();
+    document.getElementById('order-form').reset();
   });
 });
 

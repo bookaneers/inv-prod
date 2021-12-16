@@ -26,9 +26,8 @@
     <div class="view hidden" id="customers" data-view="customers">
       <button id="new-entry">NEW ENTRY</button>
       <div class="inline-customers">
-        <span>ID</span><span>Customer</span><span>Discount</span>
+        <span>ID</span><span>Customer</span><span>Discount</span><span>Edit</span>
       </div>
-
       <ul id="cust-list"></ul>
     </div>
 
@@ -47,8 +46,8 @@
 <!-- ORDERS -->
     <div class="view hidden" id="orders" data-view="orders">
       <button id="new-order">NEW ORDER</button>
-      <div class="inline-customers">
-        <span>ID</span><span>Customer</span><span>Part Number</span><span>Qty</span><span>Price</span>
+      <div class="inline-orders">
+        <span>ID</span><span>Customer</span><span>Part Number</span><span>Qty</span><span>Price</span><span>Edit</span>
       </div>
       <ul id="order-list"></ul>
     </div>
@@ -56,7 +55,7 @@
 
 <!-- ORDERS FORM -->
     <div class="view hidden" id="o-form" data-view="o-form">
-      <h1> New Client </h1>
+      <h1> New Order </h1>
       <form id="order-form">
         <label for="customer-id">ID</label>
         <input required name="customer-id" type="text" id="customer-id">
@@ -64,6 +63,7 @@
         <input required name="customer-name" type="text" id="customer-name">
         <label for="form-part">Part</label>
         <input required name="form-part" type="text" id="form-part">
+        <br><br>
         <label for="form-qty">Qty</label>
         <input required name="form-qty" type="text" id="form-qty">
         <label for="form-price">Price</label>
@@ -74,7 +74,7 @@
 
 <!-- REPORT -->
     <div class="view hidden" id="report" data-view="report">
-      <h1> WORLD </h1>
+      <h1> REPORT </h1>
     </div>
 
   </main>
