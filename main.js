@@ -20,8 +20,8 @@ const orders = [
 ];
 
 console.log('Customers Disc:', customersDisc);
-console.log('Orders: ',orders);
-
+console.log('Orders: ', orders);
+console.log('Report: ', report);
 
 // ---------- navigation ----------
 const $customers = document.querySelector('#customers');
@@ -53,7 +53,6 @@ document.querySelector('#customers-view').addEventListener('click', (event) => {
     $displayCustomer.textContent = customersDisc[i].customer;
     const $displayDisc = document.createElement('span');
     $displayDisc.textContent = customersDisc[i].disc;
-
     const $displayIcon = document.createElement('span');
     const $icon = document.createElement('img');
     // $icon.setAttribute('class', 'pen');
@@ -67,12 +66,8 @@ document.querySelector('#customers-view').addEventListener('click', (event) => {
     $row.appendChild($displayCustomer);
     $row.appendChild($displayDisc);
     $row.appendChild($displayIcon);
-
     $uList.appendChild($row);
-
-    console.log(i);
   }
-
 });
 
 // ---------- new entry form ----------
@@ -84,30 +79,23 @@ document.querySelector('#new-entry').addEventListener('click', (event) => {
   $ordersForm.className = 'view hidden';
 
   const $contactForm = document.querySelector('#contact-form');
-
   $contactForm.addEventListener('submit', (event) => {
 
-    console.log(event);
+  console.log(event);
+  event.preventDefault();
 
-    event.preventDefault();
-
-    if ($contactForm.elements['form-customer'].value !== '') {
-      const entry = {
-        id: customersDisc.length + 1,
-        customer: $contactForm.elements['form-customer'].value,
-        disc: Number($contactForm.elements['form-disc'].value),
-      };
-
-      customersDisc.push(entry);
-      console.log(entry);
-      console.log(customersDisc);
-    }
-
-    document.getElementById('contact-form').reset();
-
+  if ($contactForm.elements['form-customer'].value !== '') {
+    const entry = {
+      id: customersDisc.length + 1,
+      customer: $contactForm.elements['form-customer'].value,
+      disc: Number($contactForm.elements['form-disc'].value),
+    };
+    customersDisc.push(entry);
+    console.log(customersDisc);
+  }
+  document.getElementById('contact-form').reset();
   });
 });
-
 
 // ---------- listing orders ----------
 document.querySelector('#orders-view').addEventListener('click', (event) => {
@@ -121,28 +109,20 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
   const $orderUList = document.querySelector('#order-list');
   $orderUList.innerHTML = '';
 
-  console.log($orderUList);
-
   for (let i = 0; i < orders.length; i++) {
 
     const $row = document.createElement('div');
     $row.setAttribute('class', 'row');
-
     const $displayId = document.createElement('span');
     $displayId.textContent = orders[i].id;
-
     const $displayCustomer = document.createElement('span');
     $displayCustomer.textContent = orders[i].customer;
-
     const $displayPart = document.createElement('span');
     $displayPart.textContent = orders[i].partNumber;
-
     const $displayQty = document.createElement('span');
     $displayQty.textContent = orders[i].qty;
-
     const $displayPrice = document.createElement('span');
     $displayPrice.textContent = orders[i].price;
-
     const $displayIcon = document.createElement('span');
     const $icon = document.createElement('img');
     // $icon.setAttribute('class', 'pen');
@@ -152,20 +132,15 @@ document.querySelector('#orders-view').addEventListener('click', (event) => {
     $icon.setAttribute('data-id', i);
     $displayIcon.appendChild($icon);
 
-
     $row.appendChild($displayId);
     $row.appendChild($displayCustomer);
     $row.appendChild($displayPart);
     $row.appendChild($displayQty);
     $row.appendChild($displayPrice);
     $row.appendChild($displayIcon);
-
     $orderUList.appendChild($row);
-
-    console.log(i);
   }
 });
-
 
 // ---------- new order form ----------
 document.querySelector('#new-order').addEventListener('click', (event) => {
@@ -176,9 +151,7 @@ document.querySelector('#new-order').addEventListener('click', (event) => {
   $ordersForm.className = 'view';
 
   const $orderForm = document.querySelector('#order-form');
-
   $orderForm.addEventListener('submit', (event) => {
-    console.log(event);
     event.preventDefault();
 
     if ($orderForm.elements['customer-name'].value !== '') {
@@ -190,19 +163,75 @@ document.querySelector('#new-order').addEventListener('click', (event) => {
         price: Number($orderForm.elements['form-price'].value),
       };
       orders.push(entry);
-      console.log(entry);
       console.log(orders);
     }
     document.getElementById('order-form').reset();
   });
 });
 
-
 // ---------- report ----------
 document.querySelector('#report-view').addEventListener('click', (event) => {
+
   $customers.className = 'view hidden';
   $orders.className = 'view hidden';
   $report.className = 'view';
   $customersForm.className = 'view hidden';
+  $ordersForm.className = 'view hidden';
 
+  const report = JSON.parse(JSON.stringify(customersDisc));
+
+  let quantities = 0;
+  let totalSale = 0;
+
+  for (let i = 0; i < report.length; i++) {
+
+    for (let k = 0; k < orders.length; k++) {
+      if (report[i].id === orders[k].id) {
+        quantities =+ orders[k].qty;
+        totalSale =+ orders[k].price;
+      }
+    }
+    report[i].quantities = quantities;
+    report[i].totalSale = totalSale;
+    report[i].finalSale = totalSale - (totalSale * report[i].disc)/100;
+  }
+
+  console.log(report);
+
+
+
+  const $reportUList = document.querySelector('#report-list');
+  $reportUList.innerHTML = '';
+
+  for (let i = 0; i < report.length; i++) {
+
+    const $row = document.createElement('div');
+    $row.setAttribute('class', 'row');
+
+    const $displayId = document.createElement('span');
+    $displayId.textContent = report[i].id;
+
+    const $displayCustomer = document.createElement('span');
+    $displayCustomer.textContent = report[i].customer;
+
+    const $displayTotalQty = document.createElement('span');
+    $displayTotalQty.textContent = report[i].quantities;
+
+    const $displayTotalSale = document.createElement('span');
+    $displayTotalSale.textContent = report[i].totalSale;
+
+    const $displayDisc = document.createElement('span');
+    $displayDisc.textContent = report[i].disc;
+
+    const $displayFinalSale = document.createElement('span');
+    $displayFinalSale.textContent = report[i].finalSale;
+
+    $row.appendChild($displayId);
+    $row.appendChild($displayCustomer);
+    $row.appendChild($displayTotalQty);
+    $row.appendChild($displayTotalSale);
+    $row.appendChild($displayDisc);
+    $row.appendChild($displayFinalSale);
+    $reportUList.appendChild($row);
+  }
 });

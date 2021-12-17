@@ -8,7 +8,7 @@ body {
 }
 
 main {
-  /* max-width: 700px; */
+    margin: 0 auto;
 }
 
 .navigator {
@@ -18,28 +18,33 @@ main {
   text-align: center;
 }
 
+#customers,
+#orders,
+#c-form,
+#o-form {
+  text-align: center;
+}
+
 img {
   max-height: 100px;
 }
 
 a {
-  font-size: 28px;
+  font-size: 22px;
   padding: 2rem;
   color: rgb(228,28,43)
+}
 
+h1 {
+  font-size: 26px;
 }
 
 .inline-customers,
-.inline-orders {
+.inline-orders,
+.inline-report {
   padding: 2rem;
   color: rgb(228,28,43);
   display: flex;
-}
-
-span {
-  font-size: 22px;
-  padding: 0 2rem 0 2rem;
-
 }
 
 .row {
@@ -47,6 +52,8 @@ span {
 }
 
 span {
+  font-size: 16px;
+  padding: 0 2rem 0 2rem;
   flex-basis: 20%;
 }
 
@@ -64,8 +71,8 @@ span {
   margin-left: 3rem;
   margin-top: 2rem;
   background-color: red;
-  padding: 1rem;
-  border-radius: 10%;
+  padding: 0.5rem;
+  border-radius: 25%;
 }
 
 #c-form,
