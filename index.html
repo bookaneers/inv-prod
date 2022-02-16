@@ -5,83 +5,172 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inventive Products</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>GENA</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
-  <header>
-    <div class="navigator">
-      <img src="images/logo.png">
-      <h1>Customer Report</h1>
-      <a href="#" id="customers-view">Customers</a>
-      <a href="#" id="orders-view">Orders</a>
-      <a href="#" id="report-view">Report</a>
-    </div>
-  </header>
-  <main>
-
-
-<!-- CUSTOMERS -->
-    <div class="view hidden" id="customers" data-view="customers">
-      <button id="new-entry">NEW ENTRY</button>
-      <div class="inline-customers">
-        <span>ID</span><span>Customer</span><span>Discount</span><span>Edit</span>
+  <div class="container">
+    <!-- top navigator -->
+    <div class="top-nav">
+      <div class="page-title">GENA - label GENerator with Attitude</div>
+      <div class="top-nav-button">
+        <div class="view hidden" id="nav-button" data-view="nav-button">
+          <a href="#"><button id="new-order-button">new order</button></a>
+          <a href="#"><button id="orders-button">current orders</button></a>
+        </div>
       </div>
-      <ul id="cust-list"></ul>
     </div>
+    <!-- END of top navigator -->
+    <div class="main">
+<!-- -------------------- data-view="sign-in"-------------------- -->
+      <div class="view" id="log-in" data-view="log-in">
 
-<!-- CUSTOMERS FORM -->
-    <div class="view hidden" id="c-form" data-view="c-form">
-      <h1> New Client </h1>
-      <form id="contact-form">
-        <label for="form-customer">Customer</label>
-        <input required name="form-customer" type="text" id="form-customer">
-        <label for="form-disc">Discount</label>
-        <input required name="form-disc" type="text" id="form-disc">
-        <button type="submit" id="button">SAVE</button>
-      </form>
-    </div>
+        <!-- FIRST ROW -->
+        <div class="row">
+          <div class="full-column">
+            <h2>please sign in</h2>
+          </div>
+        </div>
 
-<!-- ORDERS -->
-    <div class="view hidden" id="orders" data-view="orders">
-      <button id="new-order">NEW ORDER</button>
-      <div class="inline-orders">
-        <span>ID</span><span>Customer</span><span>Part Number</span><span>Qty</span><span>Price</span><span>Edit</span>
+        <!-- SECOND ROW -->
+        <div class="row">
+          <div class="full-column">
+<!-- ==================== FORM ==================== -->
+            <form name="sign-in" id="sign-in">
+              <div>
+                <select name="optone" id="dept" size="1">
+                  <option value="" selected="selected">select department</option>
+                </select>                
+              </div>
+              <div>
+                <select name="opttwo" id="staff" size="1">
+                  <option value="" selected="selected">select staff</option>
+                </select>                
+              </div>
+              <div>
+                <label for="password">password</label>
+                <input id="password" type="password" name="password" maxlength="10" size="10"/ required>
+              </div>
+              <div>
+                <label for="submit-order">
+                  <div>
+                    <input id="submit-password" type="button" name="submit-password" value="Login"/>
+                  </div>
+                </label>                
+              </div>
+            </form>
+<!-- ==================== end of FORM ==================== -->
+          </div>
+        </div>
+
+        <!-- THIRD ROW -->
+        <div class="row"></div>
       </div>
-      <ul id="order-list"></ul>
-    </div>
+<!-- -------------------- data-view="new-order"-------------------- -->
+      <div class="view hidden" id="new-order" data-view="new-order">
 
+        <!-- FIRST ROW -->
+        <div class="row">
+          <div class="full-column">
+            <!-- <h2>your order is in process...</h2> -->
+          </div>
+        </div>
 
-<!-- ORDERS FORM -->
-    <div class="view hidden" id="o-form" data-view="o-form">
-      <h1> New Order </h1>
-      <form id="order-form">
-        <label for="customer-id">ID</label>
-        <input required name="customer-id" type="text" id="customer-id">
-        <label for="customer-name">Customer</label>
-        <input required name="customer-name" type="text" id="customer-name">
-        <label for="form-part">Part</label>
-        <input required name="form-part" type="text" id="form-part">
-        <br><br>
-        <label for="form-qty">Qty</label>
-        <input required name="form-qty" type="text" id="form-qty">
-        <label for="form-price">Price</label>
-        <input required name="form-price" type="text" id="form-price">
-        <button type="submit" id="button-order">SAVE</button>
-      </form>
-    </div>
+        <!-- SECOND ROW -->
+        <div class="row">
+          <div class="full-column">
 
-<!-- REPORT -->
-    <div class="view hidden" id="report" data-view="report">
-      <div class="inline-report">
-        <span>ID</span><span>Customer</span><span>Total Qty</span><span>Total Sale</span><span>Discount</span><span>Final Sale</span>
+<!-- ==================== FORM ==================== -->
+            <form name="order-form" id="order-form">
+              <select name="optone" id="label-type" size="1">
+                <option value="" selected="selected">select label type</option>
+              </select>
+              <select name="opttwo" id="label-kind" size="1">
+                <option value="" selected="selected">select labels kind</option>
+              </select>
+
+              <div class="labels-requests">
+                <div class="request1">
+                  <label for="req1">
+                    <div><iframe src="images/logo-small.png" id="label-req1" frameboard="1" width="336px" height="232px"></iframe></div>
+                    <input id="req1" type="checkbox" name="req1"/>
+                  </label>
+                  <label for="req1-qty">Quantity</label>
+                  <input id="req1-qty" type="number" name="req1-qty" min="0" max="99" onKeyDown="if(this.value.length==3) return false;"/>                
+                </div>
+
+                <div class="request2">
+                  <label for="req2">
+                    <div><iframe src="images/logo-small.png" id="label-req2" frameboard="1" width="336px" height="232px"></iframe></div>
+                    <input id="req2" type="checkbox" name="req2"/>
+                  </label> 
+                  <label for="req2-qty">Quantity</label>
+                  <input id="req2-qty" type="number" name="req2-qty" min="0" max="99" onKeyDown="if(this.value.length==3) return false;"/>                
+                </div>
+
+                <div class="request3">
+                  <label for="req3">
+                    <div><iframe src="images/logo-small.png" id="label-req3" frameboard="1" width="336px" height="232px"></iframe></div>
+                    <input id="req3" type="checkbox" name="req3"/>
+                  </label>
+                  <label for="req3-qty">Quantity</label>
+                  <input id="req3-qty" type="number" name="req3-qty" min="0" max="99" onKeyDown="if(this.value.length==3) return false;"/>               
+                </div>
+
+                <div class="request4">
+                  <label for="req4">
+                    <div><iframe src="images/logo-small.png" id="label-req4" frameboard="1" width="336px" height="232px"></iframe></div>
+                    <input id="req4" type="checkbox" name="req4"/>
+                  </label>
+                  <label for="req4-qty">Quantity</label>
+                  <input id="req4-qty" type="number" name="req4-qty" min="0" max="99" onKeyDown="if(this.value.length==3) return false;"/>                
+                </div>
+              </div>
+
+              <label for="submit-order">
+                <div>
+                  <input id="submit-order" type="submit" name="submit-order" value="submit"/>
+                </div>
+              </label>
+              
+            </form>
+<!-- ==================== end of FORM ==================== -->
+          </div> 
+        </div> 
+        <!-- THIRD ROW -->
+        <div class="row"></div>
       </div>
-      <ul id="report-list"></ul>
-    </div>
+<!-- -------------------- data-view="my-order"-------------------- -->
+      <div class="view hidden" id="orders" data-view="orders">
 
-  </main>
-  <script src="main.js"></script>
+        <!-- FIRST ROW -->
+        <div class="row">
+          <div class="full-column">
+            <!-- <h2>all of your orders...</h2> -->
+          </div>
+        </div>
+
+        <!-- SECOND ROW -->
+        <div>
+          <ul class="entries-list"></ul>
+        </div>
+
+        <!-- THIRD ROW -->
+        <div class="row"></div>
+      </div>
+    </div>
+  </div> 
+  <!-- END of container -->
+
+  <script src="js/data.js"></script>
+  <script src="js/addorder.js"></script>
+  <script src="js/labeltype.js"></script>
+  <script src="js/signin.js"></script>
+  <script src="js/displayorders.js"></script>
+  <script src="js/displayitem.js"></script>
+  <script src="js/getlabel.js"></script>
 </body>
-
 </html>
