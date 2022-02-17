@@ -93,6 +93,13 @@ function newItem(entry) {
     $processingIcon.setAttribute('data-id', entry.entryId);    
 
     // create image tag
+    const $deliveredIcon = document.createElement('img');
+    $deliveredIcon.setAttribute('src', 'images/delivered.png');
+    $deliveredIcon.setAttribute('class', 'delivered');
+    // DATA-ID
+    $deliveredIcon.setAttribute('data-id', entry.entryId);  
+
+    // create image tag
     const $deleteIcon = document.createElement('img');
     $deleteIcon.setAttribute('src', 'images/delete.png');
     $deleteIcon.setAttribute('class', 'delete');
@@ -118,8 +125,8 @@ function newItem(entry) {
     $listedOneFourthColumn2.appendChild($displayEntryId);
     $listedOneFourthColumn2.appendChild($displayStatus);
     if ($userName === 'amandaa') {
-        $listedOneFourthColumn2.appendChild($approvedIcon);
         $listedOneFourthColumn2.appendChild($processingIcon);
+        $listedOneFourthColumn2.appendChild($deliveredIcon);
     }
 
     if ($userName === 'lead') {
