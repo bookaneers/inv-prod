@@ -68,6 +68,7 @@ $uList.addEventListener('click', function (event) {
   // automatically return to the beginning of the event.
   if (event.target.className !== 'approved' 
   && event.target.className !== 'processing'  
+  && event.target.className !== 'delivered' 
   && event.target.className !== 'delete') {
     return;
   }
@@ -105,6 +106,26 @@ $uList.addEventListener('click', function (event) {
       for (let i = 0; i < data.entries.length; i++) {
         if ($orderNumber === data.entries[i].entryId) {
           data.entries[i].status = 'processing';
+        }
+      }
+      // reset page
+      document.querySelector('#orders-button').click();
+    } 
+  }
+
+  // if users (amandaa only) clicks on 'delivered' icon' it 
+  // will change the order's status to 'delivered'.
+  if (event.target.className === 'delivered') {
+
+    // confirm method to display a message and 
+    // colect 'ok/cancel' answer from user
+    let text = 'Update to "delivered"';
+    if (confirm(text) == true) {
+      const $orderNumber = parseInt(event.target.getAttribute('data-id'));
+  
+      for (let i = 0; i < data.entries.length; i++) {
+        if ($orderNumber === data.entries[i].entryId) {
+          data.entries[i].status = 'delivered';
         }
       }
       // reset page

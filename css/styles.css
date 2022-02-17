@@ -109,7 +109,7 @@ ul {
     margin: 0; /* Remove margins */
 }
 
-.approved, .processing, .delete {
+.approved, .processing, .delivered, .delete {
     cursor: pointer;
     height: 30px;
 }
