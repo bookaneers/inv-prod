@@ -1,4 +1,4 @@
- // ---------- (SUBMIT) ADDING OR REPLACING AN ENTRY ----------
+// ---------- (SUBMIT) ADDING OR REPLACING AN ENTRY ----------
 
 // query the entire form
 const $orderForm = document.getElementById('order-form');
