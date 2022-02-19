@@ -1,8 +1,9 @@
 // README: You will find an addEventListener(load) to
-// display the local database. But it will first switch
-// view to 'orders'.
-// There is also an addEventListener(click) to update the 
-// status of an order or delete it for good.
+// display the local database. 
+// There are two addEventListener(click) to update the 
+// status of an order or delete it for good. But it 
+// will first switch view to 'orders'.
+
 
 // querying orders button
 const $myOrders = document.querySelector('#orders-button');

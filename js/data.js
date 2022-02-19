@@ -42,8 +42,9 @@ const departments = {
     'machine-shop': {}, 
     'maintenance': {}, 
     'marketing': {
-        'fernandof':{'password':'fern2022'},
         'amandaa':{'password':'aman2022'},
+        'fernandof':{'password':'fern2022'},
+        'milob':{'password':'milo2022'},
         'nathans':{'password':'nath2022'},
         'lead':{'password':'lead2022'}
     }, 
